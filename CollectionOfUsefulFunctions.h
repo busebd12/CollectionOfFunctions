@@ -92,8 +92,8 @@ void printPriorityQueue(std::priority_queue<T> priorityQueue)
 	}
 }
 
-template <typename T, typename S, typename R>
-void printSet(std::set<T,S,R> mySet)
+template <typename T, typename Compare, typename Alloc>
+void printSet(std::set<T,Compre,Alloc> mySet)
 {
 	for(const auto & element : mySet)
 	{
