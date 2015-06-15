@@ -123,7 +123,12 @@ void printMultiMap(const MultiMapType & Multimap)
 {
 	for(const auto & element : Multimap)
 	{
-		std::cout << "Key: " << element.first << " maps to value: " << element.second << "\n";
+		auto value=Multimap.equal_range(element.first);
+		for(auto itr=value.first;itr!=value.second;++itr)
+		{
+			std::cout << "Key: " << element.first << " maps to value: " << itr->second << "\n";
+		}
+		
 	}
 }
 
@@ -269,7 +274,11 @@ void printUnorderedMultiMap(const UnorderedMultimapType & UnorderedMultimap)
 {
 	for(const auto & element : UnorderedMultimap)
 	{
-		std::cout << "Key: " << element.first << " maps to value: " << element.second << "\n";
+		auto value=UnorderedMultimap.equal_range(element.first);
+		for(auto itr=value.first;itr!=value.second;++itr)
+		{
+			std::cout << "Key: " << element.first << " maps to value: " << itr->second << "\n";
+		}
 	}
 
 }
@@ -315,7 +324,7 @@ void printVector(std::vector<T> vec)
 */
 
 
-////SIMPLE SEARCH FUNCTIONS FOR STL CONTAINERS/////
+////////////////////////////////////////////////////SIMPLE SEARCH FUNCTIONS FOR STL CONTAINERS////////////////////////////////////////////////////////
 template <typename ArrayType, typename ValueType>
 void searchInArrayFor(const ArrayType & Array, ValueType searchValue)
 {
@@ -476,8 +485,47 @@ void searchInListFor(std::list<T> List, T searchValue)
 }
 */
 
-template <typename MapType, typename KeyType>
-void searchInMapByKey(const MapType & Map, KeyType keyValue)
+template <typename StackType, typename ValueType>
+void searchInStackFor(const StackType & Stack, ValueType searchValue)
+{
+	while(!Stack.empty())
+	{
+		if(Stack.top()==searchValue)
+		{
+			std::cout << Stack.top() << ", the top of the stack, matches " << searchValue << ", the value you were searching for in the stack" << "\n";
+		}
+	}
+}
+
+template <typename QueueType, typename ValueType>
+void searchInQueueFor(const QueueType & Queue, ValueType searchValue)
+{
+	while(!Queue.empty())
+	{
+		if(Queue.top==searchValue)
+		{
+			std::cout << Queue.top << ", a value in the queue matches " << searchValue << " the value you were searching for" << "\n";
+		}
+		Queue.pop();
+	}
+}
+
+template <typename PriorityQueueType, typename ValueType>
+void searchInPriorityQueueFor(const PriorityQueueType & PriorityQueue, ValueType searchValue)
+{
+	while(!PriorityQueue.empty())
+	{
+		if(PriorityQueue.top==searchValue)
+		{
+			std::cout << PriorityQueue.top << ", a value in the priority queue matches " << searchValue << " the value you were searching for" << "\n";
+		}
+		PriorityQueue.pop();
+	}
+}
+
+
+template <typename MapType, typename ValueType>
+void searchInMapByValue(const MapType & Map, ValueType searchValue)
 {
 	if(Map.empty())
 	{
@@ -485,9 +533,9 @@ void searchInMapByKey(const MapType & Map, KeyType keyValue)
 	}
 	for(const auto & element : Map)
 	{
-		if(element.first==keyValue)
+		if(element.second==searchValue)
 		{
-			std::cout << keyValue << " matches " << element.first << ", a key value" << " in the map" << "\n";
+			std::cout << searchValue << " matches " << element.second << ", a value associated with a key" << " in the map" << "\n";
 		}
 	}
 }
@@ -512,5 +560,55 @@ void searchInMapByKey(std::map<Key,T> Map, T keyValue)
 	}
 }
 */
+
+template <typename MultimapType, typename ValueType>
+void searchInMultiMapByValue(const MultimapType & Multimap, ValueType searchValue)
+{
+	for(const auto & element : Multimap)
+	{
+		auto value=equal_range(element.first);
+		for(auto itr=value.first;itr!=value.second;++itr)
+		{
+			if(itr->second==searchValue)
+			{
+				std::cout << itr->second << " has the same value as " << searchValue << ", a value in the multimap" << "\n";
+			}
+		}
+	}
+}
+
+template <typename UnorderedMapType, typename ValueType>
+void searchInUnorderedMapByValue(const UnorderedMapType & UnorderedMap, ValueType searchValue)
+{
+	if(UnorderedMap.empty())
+	{
+		std::cout << "Map is empty, nothing to search for..." << "\n";
+	}
+	for(const auto & element : UnorderedMap)
+	{
+		if(element.second==searchValue)
+		{
+			std::cout << searchValue << " matches " << element.second << ", a value associated with a key" << " in the unordered map" << "\n";
+		}
+	}
+}
+
+template <typename UnorderedMultiMapType, typename ValueType>
+void searchInUnorderedMultiMapByValue(const UnorderedMultiMapType & UnorderedMultiMap, ValueType searchValue)
+{
+	for(const auto & element : UnorderedMultiMap)
+	{
+		auto value=equal_range(element.first);
+		for(auto itr=value.first;itr!=value.second;++itr)
+		{
+			if(itr->second==searchValue)
+			{
+				std::cout << itr->second << " has the same value as " << searchValue << ", a value in the unordered multimap" << "\n";
+			}
+		}
+	}
+}
+
+
 
 #endif
