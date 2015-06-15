@@ -16,42 +16,96 @@
 #include <cstdlib>
 
 /*PRINT FUNCTIONS FOR ALL STL CONTAINERS TEMPLATED TO WORK WITH ANY TYPE*/
+template <typename ArrayType>
+void printArray(const ArrayType & Array)
+{
+	for(const auto & element : Array)
+	{
+		std::cout << element << "\n";
+	}
+}
+
+/*
 template <typename T, size_t N>
 void printArray(std::array<T,N> myArray)
 {
-     for(const auto & element : myArray)
-     {
-	 	std::cout << element << "\n";
-     }
+  	for(const auto & element : myArray)
+  	{
+ 		std::cout << element << "\n";
+  	}
+}
+*/
+
+template <typename DequeType>
+void printDeque(const DequeType & Deque)
+{
+	for(const auto & element : Deque)
+	{
+		std::cout << element << "\n";
+	}
 }
 
+/*
 template <typename T>
 void printDeque(std::deque<T> d)
 {
-      for(const auto & element : d)
-      {
-	 	std::cout << element << "\n";
-      }
+   for(const auto & element : d)
+   {
+ 		std::cout << element << "\n";
+   }
+}
+*/
+
+template <typename ForwardListType>
+void printForwardList(const ForwardListType & ForwardList)
+{
+	for(const auto & element : ForwardList)
+	{
+		std::cout << element << "\n";
+	}
 }
 
+/*
 template <typename T>
 void printForwardList(std::forward_list<T> fowardList)
 {
-      for(const auto & element : fowardList)
-      {
-	  	std::cout << element << "\n";
-      }
+	for(const auto & element : fowardList)
+   {
+  		std::cout << element << "\n";
+   }
+}
+*/
+
+template <typename ListType>
+void printList(const ListType & List)
+{
+ 	for(const auto & element : List)
+ 	{
+		std::cout << element << "\n";
+ 	}
 }
 
+/*
 template <typename T>
 void printList(std::list<T> List)
 {
-       for(const auto & element : List)
-       {
-	   	std::cout << element << "\n";
-       }
+ 	for(const auto & element : List)
+ 	{
+		std::cout << element << "\n";
+ 	}
+}
+*/
+
+template <typename MapType>
+void printMap(const MapType & Map)
+{
+	for(const auto & element : Map)
+	{
+		std::cout << "Key: " << element.first << " maps to value: " << element.second << "\n";
+	}
 }
 
+/*
 //need two typenames here since a map take a key and a value
 //So, one typename for the key and one for the value
 template <typename Key, typename T>
@@ -62,7 +116,18 @@ void printMap(std::map<Key,T> Map)
 		std::cout << "Key: " << element.first << " maps to value: " << element.second << "\n";
 	}
 }
+*/
 
+template <typename MultiMapType>
+void printMultiMap(const MultiMapType & Multimap)
+{
+	for(const auto & element : Multimap)
+	{
+		std::cout << "Key: " << element.first << " maps to value: " << element.second << "\n";
+	}
+}
+
+/*
 template <typename Key, typename T, typename Compare, typename Alloc>
 void printMultiMap(std::multimap<Key,T,Compare,Alloc> Multimap)
 {
@@ -71,7 +136,19 @@ void printMultiMap(std::multimap<Key,T,Compare,Alloc> Multimap)
 		std::cout << "Key: " << element.first << " maps to value: " << element.second << "\n";
 	}
 }
+*/
 
+template <typename QueueType>
+void printQueue(const QueueType & Queue)
+{
+	while(!Queue.empty())
+	{
+		std::cout << Queue.front() << "\n";
+		Queue.pop();
+	}
+}
+
+/*
 template <typename T>
 void printQueue(std::queue<T> Q)
 {
@@ -81,7 +158,19 @@ void printQueue(std::queue<T> Q)
 		Q.pop();
 	}
 }
+*/
 
+template <typename PriorityQueueType>
+void printPriorityQueue(const PriorityQueueType & PriorityQueue)
+{
+	while(!PriorityQueue.empty())
+	{
+		std::cout << PriorityQueue.top() << "\n";
+		PriorityQueue.pop();
+	}
+}
+
+/*
 template <typename T>
 void printPriorityQueue(std::priority_queue<T> priorityQueue)
 {
@@ -91,7 +180,18 @@ void printPriorityQueue(std::priority_queue<T> priorityQueue)
 		priorityQueue.pop();
 	}
 }
+*/
 
+template <typename SetType>
+void printSet(const SetType & Set)
+{
+	for(const auto & element : Set)
+	{
+		std::cout << element << "\n";
+	}
+}
+
+/*
 template <typename T, typename Compare, typename Alloc>
 void printSet(std::set<T,Compare,Alloc> mySet)
 {
@@ -100,7 +200,18 @@ void printSet(std::set<T,Compare,Alloc> mySet)
 		std::cout << element << "\n";
 	}
 }
+*/
 
+template <typename MultisetType>
+void printMultiSet(const MultisetType & Multiset)
+{
+	for(const auto & element : Multiset)
+	{
+		std::cout << element << "\n";
+	}
+}
+
+/*
 template <typename T, typename Compare, typename Alloc>
 void printMultiSet(std::multiset<T,Compare,Alloc> Multiset)
 {
@@ -109,7 +220,19 @@ void printMultiSet(std::multiset<T,Compare,Alloc> Multiset)
 		std::cout << element << "\n";
 	}
 }
+*/
 
+template <typename StackType>
+void printStack(const StackType & Stack)
+{
+	while(!Stack.empty())
+	{
+		std::cout << Stack.top() << "\n";
+		Stack.pop();
+	}
+}
+
+/*
 template <typename T>
 void printStack(std::stack<T> myStack)
 {
@@ -119,7 +242,18 @@ void printStack(std::stack<T> myStack)
 		myStack.pop();
 	}
 }
+*/
 
+template <typename UnorderedMapType>
+void printUnorderedMap(const UnorderedMapType & UnorderedMap)
+{
+	for(const auto & element : UnorderedMap)
+	{
+		std::cout << "Key: " << element.first << " maps to value: " << element.second << "\n";
+	}
+}
+
+/*
 template <typename Key, typename T,typename Hash,typename Pred,typename Alloc>
 void printUnorderedMap(std::unordered_map<Key,T,Hash,Pred,Alloc> myUnorderedMap)
 {
@@ -128,17 +262,19 @@ void printUnorderedMap(std::unordered_map<Key,T,Hash,Pred,Alloc> myUnorderedMap)
 		std::cout << "Key: " << element.first << " maps to value: " << element.second << "\n";
 	}
 }
+*/
 
-template <typename Key, typename T, typename Hash, typename Pred, typename Alloc>
-void printUnorderedMultiMap(std::unordered_multimap<Key,T,Hash,Pred,Alloc> myUnorderedMultiMap)
+template <typename UnorderedMultimapType>
+void printUnorderedMultiMap(const UnorderedMultimapType & UnorderedMultimap)
 {
-	for(const auto & element : myUnorderedMultiMap)
+	for(const auto & element : UnorderedMultimap)
 	{
 		std::cout << "Key: " << element.first << " maps to value: " << element.second << "\n";
 	}
 
 }
 
+/*
 template <typename Key, typename Hash, typename Pred, typename Alloc>
 void printUnorderedSet(std::unordered_set<Key,Hash,Pred,Alloc> unorderedSet)
 {
@@ -147,16 +283,27 @@ void printUnorderedSet(std::unordered_set<Key,Hash,Pred,Alloc> unorderedSet)
 		std::cout << element << "\n";
 	}
 }
+*/
 
-template <typename Key, typename Hash, typename Pred, typename Alloc>
-void printUnorderedMultiSet(std::unordered_multiset<Key,Hash,Pred,Alloc> UnorderedMultiSet)
+template <typename UnorderedMultisetType>
+void printUnorderedMultiSet(const UnorderedMultisetType & UnorderedMultiset)
 {
-	for(const auto & element : UnorderedMultiSet)
+	for(const auto & element : UnorderedMultiset)
 	{
 		std::cout << element << "\n";
 	}
 }
 
+template <typename VectorType>
+void printVector(const VectorType & Vector)
+{
+	for(const auto & element : Vector)
+	{
+		std::cout << element << "\n";
+	}
+}
+
+/*
 template <typename T>
 void printVector(std::vector<T> vec)
 {
@@ -165,9 +312,30 @@ void printVector(std::vector<T> vec)
 		std::cout << element << "\n";
 	}
 }
+*/
 
 
-/*SIMPLE SEARCH FUNCTIONS FOR STL CONTAINERS*/
+////SIMPLE SEARCH FUNCTIONS FOR STL CONTAINERS/////
+template <typename ArrayType, typename ValueType>
+void searchInArrayFor(const ArrayType & Array, ValueType searchValue)
+{
+	if(Array.empty())
+	{
+		std::cout << "Array is empty, nothing to search for..." << "\n";
+	}
+	else
+	{
+		for(const auto & element : Array)
+		{
+			if(element==searchValue)
+			{
+				std::cout << searchValue << " matches " << element << ", an element in the array" << "\n";
+			}
+		}
+	}	
+}
+
+/*
 template <typename T, size_t N>
 void searchInArrayFor(std::array<T,N> Array, T searchValue)
 {
@@ -186,7 +354,28 @@ void searchInArrayFor(std::array<T,N> Array, T searchValue)
 		}
 	}	
 }
+*/
 
+template <typename DequeType, typename ValueType>
+void searchInDequeFor(const DequeType & Deque, ValueType searchValue)
+{
+	if(Deque.empty())
+	{
+		std::cout << "Deque is empty, nothing to search for..." << "\n";
+	}
+	else
+	{
+		for(const auto & element : Deque)
+		{
+			if(element==searchValue)
+			{
+				std::cout << searchValue << " matches " << element << ", an element in the deque" << "\n";
+			}
+		}
+	}	
+}
+
+/*
 template <typename T>
 void searchInDequeFor(std::deque<T> Deque, T searchValue)
 {
@@ -205,7 +394,28 @@ void searchInDequeFor(std::deque<T> Deque, T searchValue)
 		}
 	}	
 }
+*/
 
+template <typename ForwardListType, typename ValueType>
+void searchInForwardListFor(const ForwardListType & ForwardList, ValueType searchValue)
+{
+	if(ForwardList.empty())
+	{
+		std::cout << "Forward list is empty, nothing to search for..." << "\n";
+	}
+	else
+	{
+		for(const auto & element : ForwardList)
+		{
+			if(element==searchValue)
+			{
+				std::cout << searchValue << " matches " << element << ", an element in the forward list" << "\n";
+			}
+		}
+	}	
+}
+
+/*
 template <typename T>
 void searchInForwardListFor(std::forward_list<T> ForwardList, T searchValue)
 {
@@ -224,7 +434,28 @@ void searchInForwardListFor(std::forward_list<T> ForwardList, T searchValue)
 		}
 	}	
 }
+*/
 
+template <typename ListType, typename ValueType>
+void searchInListFor(const ListType & List, ValueType searchValue)
+{
+	if(List.empty())
+	{
+		std::cout << "List is empty, nothing to search for..." << "\n";
+	}
+	else
+	{
+		for(const auto & element : List)
+		{
+			if(element==searchValue)
+			{
+				std::cout << searchValue << " matches " << element << ", an element in the list" << "\n";
+			}
+		}
+	}	
+}
+
+/*
 template <typename T>
 void searchInListFor(std::list<T> List, T searchValue)
 {
@@ -243,7 +474,25 @@ void searchInListFor(std::list<T> List, T searchValue)
 		}
 	}	
 }
+*/
 
+template <typename MapType, typename KeyType>
+void searchInMapByKey(const MapType & Map, KeyType keyValue)
+{
+	if(Map.empty())
+	{
+		std::cout << "Map is empty, nothing to search for..." << "\n";
+	}
+	for(const auto & element : Map)
+	{
+		if(element.first==keyValue)
+		{
+			std::cout << keyValue << " matches " << element.first << ", a key value" << " in the map" << "\n";
+		}
+	}
+}
+
+/*
 template <typename Key, typename T>
 void searchInMapByKey(std::map<Key,T> Map, T keyValue)
 {
@@ -262,5 +511,6 @@ void searchInMapByKey(std::map<Key,T> Map, T keyValue)
 		}
 	}
 }
+*/
 
 #endif
