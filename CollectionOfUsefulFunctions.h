@@ -611,7 +611,7 @@ void searchInUnorderedMultiMapByValue(const UnorderedMultiMapType & UnorderedMul
 
 /////////////////////////////////STL CONTAINER FUNCTIONS TO GET THE NUMBER OF ELEMENTS MATCHING A CERTAIN REQUIREMENT/////////////////////////////////
 template <typename ArrayType, typename ElementType>
-void elementCount(const ArrayType & Array, ElementType Element)
+void arrayElementCount(const ArrayType & Array, ElementType Element)
 {
 	int count=0;
 	for(const auto & element : Array)
@@ -623,6 +623,20 @@ void elementCount(const ArrayType & Array, ElementType Element)
 	}
 	std::cout << "The number of " << Element << "'s in the array is " << count << "\n";
 }
+
+template <typename DequeType, typename ElementType>
+void dequeElementCount(const DequeType & Deque, ElementType Element)
+{
+	int count=0;
+	for(const auto & element : Deque)
+	{
+		if(element==Element)
+		{
+			count++;
+		}
+		std::cout << "The number of " << Element << "'s in the deque is " << count << "\n";
+	}
+} 
 
 
 #endif
