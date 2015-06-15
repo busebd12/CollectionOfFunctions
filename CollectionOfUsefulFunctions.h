@@ -15,7 +15,7 @@
 #include <stack>
 #include <cstdlib>
 
-/*PRINT FUNCTIONS FOR ALL STL CONTAINERS TEMPLATED TO WORK WITH ANY TYPE*/
+////////////////////////////////////////////PRINT FUNCTIONS FOR ALL STL CONTAINERS TEMPLATED TO WORK WITH ANY TYPE//////////////////////////////////////
 template <typename ArrayType>
 void printArray(const ArrayType & Array)
 {
@@ -609,6 +609,20 @@ void searchInUnorderedMultiMapByValue(const UnorderedMultiMapType & UnorderedMul
 	}
 }
 
+/////////////////////////////////STL CONTAINER FUNCTIONS TO GET THE NUMBER OF ELEMENTS MATCHING A CERTAIN REQUIREMENT/////////////////////////////////
+template <typename ArrayType, typename ElementType>
+void elementCount(const ArrayType & Array, ElementType Element)
+{
+	int count=0;
+	for(const auto & element : Array)
+	{
+		if(element==Element)
+		{
+			count++;
+		}
+	}
+	std::cout << "The number of " << Element << "'s in the array is " << count << "\n";
+}
 
 
 #endif
