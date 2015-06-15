@@ -93,7 +93,7 @@ void printPriorityQueue(std::priority_queue<T> priorityQueue)
 }
 
 template <typename T, typename Compare, typename Alloc>
-void printSet(std::set<T,Compre,Alloc> mySet)
+void printSet(std::set<T,Compare,Alloc> mySet)
 {
 	for(const auto & element : mySet)
 	{
@@ -163,6 +163,103 @@ void printVector(std::vector<T> vec)
 	for(const auto & element : vec)
 	{
 		std::cout << element << "\n";
+	}
+}
+
+
+/*SIMPLE SEARCH FUNCTIONS FOR STL CONTAINERS*/
+template <typename T, size_t N>
+void searchInArrayFor(std::array<T,N> Array, T searchValue)
+{
+	if(Array.empty())
+	{
+		std::cout << "Array is empty, nothing to search for..." << "\n";
+	}
+	else
+	{
+		for(const auto & element : Array)
+		{
+			if(element==searchValue)
+			{
+				std::cout << searchValue << " matches " << element << ", an element in the array" << "\n";
+			}
+		}
+	}	
+}
+
+template <typename T>
+void searchInDequeFor(std::deque<T> Deque, T searchValue)
+{
+	if(Deque.empty())
+	{
+		std::cout << "Deque is empty, nothing to search for..." << "\n";
+	}
+	else
+	{
+		for(const auto & element : Deque)
+		{
+			if(element==searchValue)
+			{
+				std::cout << searchValue << " matches " << element << ", an element in the deque" << "\n";
+			}
+		}
+	}	
+}
+
+template <typename T>
+void searchInForwardListFor(std::forward_list<T> ForwardList, T searchValue)
+{
+	if(ForwardList.empty())
+	{
+		std::cout << "Forward list is empty, nothing to search for..." << "\n";
+	}
+	else
+	{
+		for(const auto & element : ForwardList)
+		{
+			if(element==searchValue)
+			{
+				std::cout << searchValue << " matches " << element << ", an element in the forward list" << "\n";
+			}
+		}
+	}	
+}
+
+template <typename T>
+void searchInListFor(std::list<T> List, T searchValue)
+{
+	if(List.empty())
+	{
+		std::cout << "List is empty, nothing to search for..." << "\n";
+	}
+	else
+	{
+		for(const auto & element : List)
+		{
+			if(element==searchValue)
+			{
+				std::cout << searchValue << " matches " << element << ", an element in the list" << "\n";
+			}
+		}
+	}	
+}
+
+template <typename Key, typename T>
+void searchInMapByKey(std::map<Key,T> Map, T keyValue)
+{
+	if(Map.empty())
+	{
+		std::cout << "Map is empty, nothing to search for..." << "\n";
+	}
+	else
+	{
+		for(const auto & element : Map)
+		{
+			if(element.first==keyValue)
+			{
+				std::cout << keyValue << "matches a key value " << " in the map" << "\n";
+			}
+		}
 	}
 }
 
