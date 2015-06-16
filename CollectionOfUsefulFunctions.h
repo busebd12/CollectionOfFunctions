@@ -351,10 +351,10 @@ void listElementCount(const ListType & List, ElementType Element)
 template <typename MapType, typename ValueType>
 void mapElementCount(const MapType & Map, ValueType Value)
 {
+	int count=0;
 	for(const auto & element : Map)
 	{
-		int count=0;
-		if(element.first==Element)
+		if(element.first==Value)
 		{
 			count++;
 		}
@@ -392,7 +392,7 @@ void queueElementCount(QueueType & Queue, ElementType Element)
 		}
 		Queue.pop();
 	}
-	std::cout << "The number of " << Element "'s in the queue is " << count << "\n";
+	std::cout << "The number of " << Element << "'s in the queue is " << count << "\n";
 }
 
 #endif
