@@ -354,7 +354,7 @@ void mapElementCount(const MapType & Map, ValueType Value)
 	int count=0;
 	for(const auto & element : Map)
 	{
-		if(element.first==Value)
+		if(element.second==Value)
 		{
 			count++;
 		}
@@ -368,7 +368,7 @@ void multiMapElementCount(const MultiMapType & MultiMap, ValueType Value)
 	int count=0;
 	for(const auto & element : MultiMap)
 	{
-		auto rangeValue=equal_range(element);
+		auto rangeValue=MultiMap.equal_range(element);
 		for(auto itr=rangeValue.first;itr!=rangeValue.second;++itr)
 		{
 			if(itr->second==Value)
