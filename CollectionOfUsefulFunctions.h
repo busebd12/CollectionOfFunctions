@@ -315,9 +315,37 @@ void dequeElementCount(const DequeType & Deque, ElementType Element)
 		{
 			count++;
 		}
-		std::cout << "The number of " << Element << "'s in the deque is " << count << "\n";
+		
 	}
+	std::cout << "The number of " << Element << "'s in the deque is " << count << "\n";
 } 
 
+template <typename ForwardListType, typename ElementType>
+void forwardListElementCount(const ForwardListType & ForwardList, ElementType Element)
+{
+	int count=0;
+	for(const auto & element : ForwardList)
+	{
+		if(element==Element)
+		{
+			count++;
+		}
+	}
+	std::cout << "The number of " << Element << "'s in the forward list is " << count << "\n";
+}
+
+template <typename ListType, typename ElementType>
+void listElementCount(const ListType & List, ElementType Element)
+{
+	int count=0;
+	for(const auto & element : List)
+	{
+		if(element==Element)
+		{
+			count++;
+		}
+	}
+	std::cout << "The number of " << Element << "'s in the list is " << count << "\n";
+}
 
 #endif
