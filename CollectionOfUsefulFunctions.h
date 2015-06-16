@@ -348,4 +348,51 @@ void listElementCount(const ListType & List, ElementType Element)
 	std::cout << "The number of " << Element << "'s in the list is " << count << "\n";
 }
 
+template <typename MapType, typename ValueType>
+void mapElementCount(const MapType & Map, ValueType Value)
+{
+	for(const auto & element : Map)
+	{
+		int count=0;
+		if(element.first==Element)
+		{
+			count++;
+		}
+	}
+	std::cout << "The number of " << Value << "'s in the map is " << count << "\n";
+}
+
+template <typename MultiMapType, typename ValueType>
+void multiMapElementCount(const MultiMapType & MultiMap, ValueType Value)
+{
+	int count=0;
+	for(const auto & element : MultiMap)
+	{
+		auto rangeValue=equal_range(element);
+		for(auto itr=rangeValue.first;itr!=rangeValue.second;++itr)
+		{
+			if(itr->second==Value)
+			{
+				count++;
+			}
+		}
+	}
+	std::cout << "The number of " << Value << "'s in the multimap is " << count << "\n";
+}
+
+template <typename QueueType, typename ElementType>
+void queueElementCount(QueueType & Queue, ElementType Element)
+{
+	int count=0;
+	while(!Queue.empty())
+	{
+		if(Queue.front()==Element)
+		{
+			count++;
+		}
+		Queue.pop();
+	}
+	std::cout << "The number of " << Element "'s in the queue is " << count << "\n";
+}
+
 #endif
