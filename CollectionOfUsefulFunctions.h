@@ -15,7 +15,9 @@
 #include <stack>
 #include <cstdlib>
 
-////////////////////////////////////////////PRINT FUNCTIONS FOR ALL STL CONTAINERS TEMPLATED TO WORK WITH ANY TYPE//////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////PRINT FUNCTIONS FOR ALL STL CONTAINERS TEMPLATED TO WORK WITH ANY TYPE//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template <typename ArrayType>
 void printArray(const ArrayType & Array)
 {
@@ -174,8 +176,9 @@ void printVector(const VectorType & Vector)
 		std::cout << element << "\n";
 	}
 }
-
-////////////////////////////////////////////////////SIMPLE SEARCH FUNCTIONS FOR STL CONTAINERS////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////SIMPLE SEARCH FUNCTIONS FOR STL CONTAINERS/////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template <typename ArrayType, typename ValueType>
 void searchInArrayFor(const ArrayType & Array, ValueType searchValue)
 {
@@ -290,7 +293,9 @@ void searchInPriorityQueueFor(PriorityQueueType & PriorityQueue, ValueType searc
 	}
 }
 
-/////////////////////////////////STL CONTAINER FUNCTIONS TO GET THE NUMBER OF ELEMENTS MATCHING A CERTAIN REQUIREMENT/////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////STL CONTAINER FUNCTIONS TO GET THE NUMBER OF A CERTAIN ELEMENT/////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template <typename ArrayType, typename ElementType>
 void arrayElementCount(const ArrayType & Array, ElementType Element)
 {
@@ -368,7 +373,7 @@ void multiMapElementCount(const MultiMapType & MultiMap, ValueType Value)
 	int count=0;
 	for(const auto & element : MultiMap)
 	{
-		auto rangeValue=MultiMap.equal_range(element);
+		auto rangeValue=MultiMap.equal_range(element.first);
 		for(auto itr=rangeValue.first;itr!=rangeValue.second;++itr)
 		{
 			if(itr->second==Value)
@@ -393,6 +398,142 @@ void queueElementCount(QueueType & Queue, ElementType Element)
 		Queue.pop();
 	}
 	std::cout << "The number of " << Element << "'s in the queue is " << count << "\n";
+}
+
+template <typename PriorityQueueType, typename ElementType>
+void priorityQueueElementCount(PriorityQueueType & PriorityQueue, ElementType Element)
+{
+	int count=0;
+	while(!PriorityQueue.empty())
+	{
+		if(PriorityQueue.top()==Element)
+		{
+			count++;
+		}
+		PriorityQueue.pop();
+	}
+	std::cout << "The number of " << Element << "'s in the priority queue is " << count << "\n";
+}
+
+template <typename SetType, typename ElementType>
+void setElementCount(const SetType & Set, ElementType Element)
+{
+	int count=0;
+	for(const auto & element : Set)
+	{
+		if(element==Element)
+		{
+			count++;
+		}
+	}
+	std::cout << "The number of " << Element << "'s in the set is " << count << "\n";
+}
+
+template <typename MultiSetType, typename ElementType>
+void multiSetElementCount(const MultiSetType & MultiSet, ElementType Element)
+{
+	int count=0;
+	for(const auto & element : MultiSet)
+	{
+		if(element==Element)
+		{
+			count++;
+		}
+	}
+	std::cout << "The number of " << Element << "'s in the multiset is " << count << "\n";
+}
+
+template <typename StackType, typename ElementType>
+void stackElementCount(StackType & Stack, ElementType Element)
+{
+	int count=0;
+	while(!Stack.empty())
+	{
+		if(Stack.top()==Element)
+		{
+			count++;
+		}
+		Stack.pop();
+	}
+	std::cout << "The number of " << Element << "'s in the stack is " << count << "\n";
+}
+
+template <typename UnorderedMapType, typename ValueType>
+void unorderedMapElementCount(const UnorderedMapType & UnorderedMap, ValueType Value)
+{
+	int count=0;
+	for(const auto & element : UnorderedMap)
+	{
+		auto rangeValue=UnorderedMap.equal_range(element.first);
+		for(auto itr=rangeValue.first;itr!=rangeValue.second;++itr)
+		{
+			if(itr->second==Value)
+			{
+				count++;
+			}
+		}
+	}
+	std::cout << "The number of " << Value << "'s in the unordered map is " << count << "\n";
+}
+
+template <typename UnorderedMultiMapType, typename ValueType>
+void unorderedMultiMapElementCount(const UnorderedMultiMapType & UnorderedMultiMap, ValueType Value)
+{
+	int count=0;
+	for(const auto & element : UnorderedMultiMap)
+	{
+		auto rangeValue=UnorderedMultiMap.equal_range(element.first);
+		for(auto itr=rangeValue.first;itr!=rangeValue.second;++itr)
+		{
+			if(itr->second==Value)
+			{
+				count++;
+			}
+		}
+	}
+	std::cout << "The number of " << Value << "'s in the unordered multimap is " << count << "\n";
+}
+
+template <typename UnorderedSetType, typename ElementType>
+void unorderedSetElementCount(const UnorderedSetType & UnorderedSet, ElementType Element)
+{
+	int count=0;
+	for(const auto & element : UnorderedSet)
+	{
+		if(element==Element)
+		{
+			count++;
+		}
+	}
+	std::cout << "The number of " << Element << "'s in the unordered set is " << count << "\n";
+}
+
+template <typename UnorderedMultiSetType, typename ElementType>
+void unorderedMultiSetElementCount(const UnorderedMultiSetType & UnorderedMultiSet, ElementType Element)
+{
+	int count=0;
+	for(const auto & element : UnorderedMultiSet)
+	{
+		if(element==Element)
+		{
+			count++;
+		}
+	}
+	std::cout << "The number of " << Element << "'s in the unordered multiset is " << count << "\n";
+}
+
+template <typename VectorType, typename ElementType>
+void vectorElementCount(const VectorType & Vector, ElementType Element)
+{
+	int count=0;
+	for(const auto & element : Vector)
+	{
+		if(element==Element)
+		{
+			count++;
+		}
+	}
+	std::cout << "The number of " << Element << "'s in the vector is " << count << "\n";
 }
 
 #endif
