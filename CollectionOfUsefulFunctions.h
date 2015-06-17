@@ -14,6 +14,7 @@
 #include <unordered_set>
 #include <stack>
 #include <cstdlib>
+#include <algorithm>
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////PRINT FUNCTIONS FOR ALL STL CONTAINERS TEMPLATED TO WORK WITH ANY TYPE//////////////////////////////////////////////////////
@@ -180,7 +181,7 @@ void printVector(const VectorType & Vector)
 //////////////////////////////////////////////////////////////////////////////////////SIMPLE SEARCH FUNCTIONS FOR STL CONTAINERS/////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 template <typename ArrayType, typename ValueType>
-void searchInArrayFor(const ArrayType & Array, ValueType searchValue)
+bool searchInArrayFor(const ArrayType & Array, ValueType searchValue)
 {
 	if(Array.empty())
 	{
@@ -193,13 +194,14 @@ void searchInArrayFor(const ArrayType & Array, ValueType searchValue)
 			if(element==searchValue)
 			{
 				std::cout << searchValue << " matches " << element << ", an element in the array" << "\n";
+				return true;
 			}
 		}
 	}	
 }
 
 template <typename DequeType, typename ValueType>
-void searchInDequeFor(const DequeType & Deque, ValueType searchValue)
+bool searchInDequeFor(const DequeType & Deque, ValueType searchValue)
 {
 	if(Deque.empty())
 	{
@@ -212,13 +214,14 @@ void searchInDequeFor(const DequeType & Deque, ValueType searchValue)
 			if(element==searchValue)
 			{
 				std::cout << searchValue << " matches " << element << ", an element in the deque" << "\n";
+				return true;
 			}
 		}
 	}	
 }
 
 template <typename ForwardListType, typename ValueType>
-void searchInForwardListFor(const ForwardListType & ForwardList, ValueType searchValue)
+bool searchInForwardListFor(const ForwardListType & ForwardList, ValueType searchValue)
 {
 	if(ForwardList.empty())
 	{
@@ -231,13 +234,14 @@ void searchInForwardListFor(const ForwardListType & ForwardList, ValueType searc
 			if(element==searchValue)
 			{
 				std::cout << searchValue << " matches " << element << ", an element in the forward list" << "\n";
+				return true;
 			}
 		}
 	}	
 }
 
 template <typename ListType, typename ValueType>
-void searchInListFor(const ListType & List, ValueType searchValue)
+bool searchInListFor(const ListType & List, ValueType searchValue)
 {
 	if(List.empty())
 	{
@@ -250,44 +254,48 @@ void searchInListFor(const ListType & List, ValueType searchValue)
 			if(element==searchValue)
 			{
 				std::cout << searchValue << " matches " << element << ", an element in the list" << "\n";
+				return true;
 			}
 		}
 	}	
 }
 
 template <typename StackType, typename ValueType>
-void searchInStackFor(StackType & Stack, ValueType searchValue)
+bool searchInStackFor(StackType & Stack, ValueType searchValue)
 {
 	while(!Stack.empty())
 	{
 		if(Stack.top()==searchValue)
 		{
 			std::cout << Stack.top() << ", the top of the stack, matches " << searchValue << ", the value you were searching for in the stack" << "\n";
+			return true;
 		}
 	}
 }
 
 template <typename QueueType, typename ValueType>
-void searchInQueueFor(QueueType & Queue, ValueType searchValue)
+bool searchInQueueFor(QueueType & Queue, ValueType searchValue)
 {
 	while(!Queue.empty())
 	{
 		if(Queue.front()==searchValue)
 		{
 			std::cout << Queue.front() << ", a value in the queue matches " << searchValue << " the value you were searching for" << "\n";
+			return true;
 		}
 		Queue.pop();
 	}
 }
 
 template <typename PriorityQueueType, typename ValueType>
-void searchInPriorityQueueFor(PriorityQueueType & PriorityQueue, ValueType searchValue)
+bool searchInPriorityQueueFor(PriorityQueueType & PriorityQueue, ValueType searchValue)
 {
 	while(!PriorityQueue.empty())
 	{
 		if(PriorityQueue.top()==searchValue)
 		{
 			std::cout << PriorityQueue.top() << ", a value in the priority queue matches " << searchValue << " the value you were searching for" << "\n";
+			return true;
 		}
 		PriorityQueue.pop();
 	}
@@ -534,6 +542,20 @@ void vectorElementCount(const VectorType & Vector, ElementType Element)
 		}
 	}
 	std::cout << "The number of " << Element << "'s in the vector is " << count << "\n";
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////SORT FUNCTION FOR NON MAP STL CONTAINERS//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+template <typename ContainerType>
+void Sort(ContainerType & Container)
+{
+	std::sort(Container.begin(),Container.end());
+	for(const auto & element : Container)
+	{
+		std::cout << element << "\n";
+	}
 }
 
 #endif
