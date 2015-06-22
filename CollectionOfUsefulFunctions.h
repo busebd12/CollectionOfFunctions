@@ -552,10 +552,6 @@ template <typename ContainerType>
 void Sort(ContainerType & Container)
 {
 	std::sort(Container.begin(),Container.end());
-	for(const auto & element : Container)
-	{
-		std::cout << element << "\n";
-	}
 }
 
 #endif
